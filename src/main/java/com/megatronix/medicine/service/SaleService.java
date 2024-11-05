@@ -27,7 +27,7 @@ public class SaleService {
 		medicine.deductQuantity(saleQuantity);
 		medicineRepository.save(medicine); // Update quantity in the Medicine table
 
-		double totalPrice = saleQuantity * medicine.getDiscount();
+		double totalPrice = saleQuantity * ( medicine.getPrice() - (medicine.getPrice() * medicine.getDiscount() / 100) );
 		Sale sale = new Sale();
 		sale.setMedicine(medicine);
 		sale.setQuantity(saleQuantity);
